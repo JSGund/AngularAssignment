@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from './user.model';
 import { Observable } from 'rxjs';
 
+const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,11 +21,18 @@ export class UserService {
    }
 
    public addUser(res) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    var userRole = 'Admin';
+
+    if (res.Role === "admin") {
+        userRole = 'Admin';
+    } else if (res.Role === "customerexecutive"){
+        userRole = 'Customer Executive';
+    }
+
     const params = new HttpParams({
         fromObject: { Name : res.name,
             Email : res.email,
-            Role : res.role,
+            Role : userRole,
             Status : 'Inactive',
             MobileNumber : res.mobilenumber
         }
@@ -33,11 +42,18 @@ export class UserService {
    }
 
    public updateUser(id, status, res) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    var userRole = 'Admin';
+
+    if (res.role === "admin") {
+        userRole = 'Admin';
+    } else if (res.role === "customerexecutive") {
+        userRole = 'Customer Executive';
+    }
+
     const params = new HttpParams({
         fromObject: { Name : res.name,
             Email : res.email,
-            Role : res.role,
+            Role : userRole,
             Status : status,
             MobileNumber : res.mobilenumber,
             _id : id

@@ -14,6 +14,7 @@ export class UserListComponent implements OnInit {
   public lstUsers: User[];
   private userId: any;
   private userStatus: any;
+  private filterData: User[];
 
   constructor(private userService: UserService, private modalService: NgbModal) { }
 
@@ -63,6 +64,20 @@ export class UserListComponent implements OnInit {
       console.log(err);
     } );
 
+  }
+
+  onSearchUser(term) {
+    if (!term) {
+      this.filterData = this.lstUsers;
+    } else {
+      this.filterData = this.lstUsers.filter(x =>
+         x.Name.trim().toLowerCase().includes(term.trim().toLowerCase())
+      );
+
+      if (this.filterData.length > 0) {
+        this.lstUsers = this.filterData;
+      }
+    }
   }
 
 }

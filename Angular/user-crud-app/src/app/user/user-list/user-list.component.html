@@ -8,10 +8,10 @@
         <div class="col-4">
           <div class="row no-gutters">
             <div class="col">
-                 <input class="form-control border-secondary border-right-0 rounded-0" type="search" value="search" id="example-search-input4">
+                 <input #textbox class="form-control border-secondary border-right-0 rounded-0" type="search" value="search" id="example-search-input4">
             </div>
             <div class="col-auto">
-                 <button class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" type="button">
+                 <button (click)='onSearchUser(textbox.value)' class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" type="button">
                     <i class="fa fa-search"></i>
                  </button>
             </div>
