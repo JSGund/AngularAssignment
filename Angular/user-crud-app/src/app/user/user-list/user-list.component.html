@@ -1,0 +1,53 @@
+<div class="card user-list">
+  <div class="card-body">
+      
+    <div class="row">
+        <div class="col-6">
+          <img src="../../assets/images/ico_users.svg">&nbsp; Users
+        </div>
+        <div class="col-4">
+          <div class="row no-gutters">
+            <div class="col">
+                 <input class="form-control border-secondary border-right-0 rounded-0" type="search" value="search" id="example-search-input4">
+            </div>
+            <div class="col-auto">
+                 <button class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" type="button">
+                    <i class="fa fa-search"></i>
+                 </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-outline-custom my-2 my-sm-0"> 
+            <i class="fa fa-plus fa-1" style="color: white;"> Add User </i> 
+          </button>
+        </div>
+    </div>
+    
+<br/>
+    <div>
+      <ejs-grid [dataSource]='lstUsers' [allowPaging]='true' [allowSorting]='true'>
+        <e-columns>
+          <e-column field='Name' headerText='Name' textAlign='Left' width='80'></e-column>
+          <e-column field='Email' headerText='Email' textAlign='Left' width='80'></e-column>
+          <e-column field='Role' headerText='Role Type' textAlign='Left' width='80'></e-column>
+          <e-column field='Status' headerText='Status' textAlign='Left' width='80'>
+            <ng-template #template let-data>
+              <div class="image">
+                <img src="../../assets/images/{{ data.Status  | lowercase}}.svg" alt=""/> &nbsp; {{ data.Status }}
+              </div>
+            </ng-template>
+          </e-column>
+          <e-column textAlign='Left' width='80'>
+            <ng-template #template>
+              <div class="image">
+                <img src="../../assets/images/ico_edit.svg" alt=""/>
+              </div>
+            </ng-template>
+          </e-column>
+        </e-columns>
+      </ejs-grid>
+    </div>
+    
+  </div>
+</div>

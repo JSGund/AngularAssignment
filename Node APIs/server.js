@@ -4,6 +4,11 @@ var express = require('express'),
   mongoose = require('mongoose'),
   User = require('./api/models/userListModel'), //created model loading here
   bodyParser = require('body-parser');
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
   
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
