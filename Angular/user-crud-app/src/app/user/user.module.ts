@@ -7,16 +7,23 @@ import { PageService, SortService, FilterService, GroupService } from '@syncfusi
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserModalComponent } from './user-modal/user-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [UserListComponent, UserComponent],
+  declarations: [UserListComponent, UserComponent, UserModalComponent],
   imports: [
     CommonModule,
     GridModule,
     AngularFontAwesomeModule,
     NgbModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+  ReactiveFormsModule
   ],
-  providers: [PageService, SortService, FilterService, GroupService]
+  providers: [PageService, SortService, FilterService, GroupService],
+  entryComponents: [
+    UserModalComponent
+  ]
 })
 export class UserModule { }

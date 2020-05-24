@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="col-2">
-          <button class="btn btn-outline-custom my-2 my-sm-0"> 
+          <button (click)="openFormModal()" class="btn btn-outline-custom my-2 my-sm-0"> 
             <i class="fa fa-plus fa-1" style="color: white;"> Add User </i> 
           </button>
         </div>
@@ -39,9 +39,16 @@
             </ng-template>
           </e-column>
           <e-column textAlign='Left' width='80'>
-            <ng-template #template>
+            <ng-template #template let-data>
               <div class="image">
-                <img src="../../assets/images/ico_edit.svg" alt=""/>
+                <img (click)="openFormModal(data)" style="cursor: pointer;" src="../../assets/images/ico_edit.svg" alt=""/>
+              </div>
+            </ng-template>
+          </e-column>
+          <e-column textAlign='Left' width='80'>
+            <ng-template #template let-data>
+              <div class="image">
+                <button (click)="onDeleteUser(data._id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
               </div>
             </ng-template>
           </e-column>

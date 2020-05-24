@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{lblHeader}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<!-- Form starts -->
+<div class="modal-body">
+  <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+    <div class="modal-boy">
+      <div class="container">
+        <div class="form-group">
+          <input type="text" placeholder="Name" class="form-control"
+            formControlName="name" />
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Email" class="form-control"
+          formControlName="email">
+        </div>
+        <div class="form-group">
+          <input type="radio" value="Admin" formControlName="role">&nbsp;
+          <label for="admin">Admin</label> &nbsp;
+          <input type="radio" value="Customer Executive" formControlName="role">&nbsp;
+          <label for="customerexecutive">Customer Executive</label>
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="email" class="form-control"
+          formControlName="mobilenumber" placeholder="Mobile Number (optional)">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-outline-custom" [disabled]="!userForm.valid">
+            <span style="color: white;">{{lblHeader}}</span> 
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Form ends here -->

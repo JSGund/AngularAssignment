@@ -5,8 +5,13 @@ var express = require('express'),
   User = require('./api/models/userListModel'), //created model loading here
   bodyParser = require('body-parser');
 
+var cors = require('cors')
+
+app.use(cors())
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     next();
 });
   
